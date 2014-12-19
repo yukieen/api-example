@@ -1,0 +1,39 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.1.9.RELEASE')
+        classpath('org.springframework:springloaded:1.2.0.RELEASE')
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(AbstractCompile) each { it.options.encoding = 'UTF-8' }
+tasks.withType(GroovyCompile) each { it.groovyOptions.encoding = 'UTF-8' }
+
+jar {
+    baseName = 'customer-service'
+    version = '1.0.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web:1.1.9.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-actuator:1.1.9.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-jdbc:1.1.9.RELEASE')
+    compile('org.mybatis:mybatis:3.2.7')
+    compile('org.mybatis:mybatis-spring:1.2.2')
+    compile('com.h2database:h2:1.4.182')
+    compile('org.postgresql:postgresql:9.3-1102-jdbc41')
+    testCompile('junit:junit:4.11')
+    testCompile('org.springframework.boot:spring-boot-starter-test:1.2.0.RELEASE')
+}

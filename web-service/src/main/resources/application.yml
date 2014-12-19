@@ -1,0 +1,42 @@
+spring:
+    profiles:
+        active: development
+    thymeleaf:
+        cache: false
+server:
+    port: 8080
+security:
+    basic:
+        enabled: false
+logging:
+    file: logs/web-service.log
+
+---
+
+spring:
+    profiles: development
+logging:
+    level:
+        org.springframework.web: DEBUG
+        web: DEBUG
+authentication:
+    service:
+        url: http://localhost:8000/
+customer:
+    service:
+        url: http://localhost:8001/
+
+---
+
+spring:
+    profiles: production
+authentication:
+    service:
+        url: http://ap.local.example.com:8000/
+customer:
+    service:
+        url: http://ap.local.example.com:8001/
+logging:
+    level:
+        org.springframework.web: ERROR
+        web: ERROR

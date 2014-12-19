@@ -1,0 +1,28 @@
+spring:
+    profiles:
+        active: development
+server:
+    port: 8000
+security:
+    basic:
+        enabled: false
+logging:
+    file: logs/authentication-service.log
+    
+---
+
+spring:
+    profiles: development
+logging:
+    level:
+        org.springframework.web: DEBUG
+        auth: DEBUG
+
+---
+
+spring:
+    profiles: production
+logging:
+    level:
+        org.springframework.web: ERROR
+        auth: ERROR

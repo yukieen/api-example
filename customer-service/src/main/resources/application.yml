@@ -1,0 +1,20 @@
+spring:
+    profiles:
+        active: development
+server:
+    port: 8001
+    
+---
+spring:
+    profiles: development
+    datasource:
+        platform: h2
+
+---
+spring:
+    profiles: production
+    datasource:
+        url: jdbc:postgresql://db.local.example.com/example
+        username: dbuser
+        password: dbpassword
+        driver-class-name: org.postgresql.Driver
