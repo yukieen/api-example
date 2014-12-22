@@ -39,4 +39,4 @@ customer:
 logging:
     level:
         org.springframework.web: ERROR
-        web: ERROR
+        web: DEBUG

@@ -6,12 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 /***
- * ログアウトします.
+ * ログインページを表示します.
  */
 @Controller
 @RequestMapping("/login")
 public class LoginController {
-	
 	
 	@RequestMapping
 	public String init(){
