@@ -19,6 +19,8 @@ logging:
     level:
         org.springframework.web: DEBUG
         web: DEBUG
+load-balancer:
+    url: 
 authentication:
     service:
         url: http://localhost:8000/
@@ -30,6 +32,8 @@ customer:
 
 spring:
     profiles: production
+load-balancer:
+        url: https://exampleLB-1751252419.ap-northeast-1.elb.amazonaws.com
 authentication:
     service:
         url: http://ap.local.example.com:8000/

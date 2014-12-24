@@ -7,3 +7,7 @@ logs/
 .classpath
 .settings
 bin/
+
+作業ログ
+*.pem
+

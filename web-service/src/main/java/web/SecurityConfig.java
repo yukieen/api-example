@@ -13,12 +13,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import web.properties.LoadBalancerProperties;
 import web.service.LoginService;
 
 @Configuration
 @EnableWebMvcSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	private LoadBalancerProperties properties;
+	
     @Override
     public void configure(WebSecurity web) throws Exception {
 	web.ignoring().antMatchers("/static/**");
@@ -30,10 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.anyRequest().authenticated();
 	http.formLogin().loginPage("/login").usernameParameter("username")
 		.passwordParameter("password")
-		.defaultSuccessUrl("/customers", true);
-	http.logout().logoutSuccessUrl("/login")
+		.defaultSuccessUrl(properties.getUrl() + "/customers", true);
+	http.logout()
 		.logoutRequestMatcher(new AntPathRequestMatcher("/logout**"))
-		.logoutSuccessUrl("/login");
+		.logoutSuccessUrl(properties.getUrl() + "/login");
 	super.configure(http);
     }
 
