@@ -32,6 +32,7 @@ dependencies {
     compile('org.mybatis:mybatis:3.2.7')
     compile('org.mybatis:mybatis-spring:1.2.2')
     compile('com.h2database:h2:1.4.182')
-    compile('org.postgresql:postgresql:9.3-1102-jdbc41')
     compile('org.springframework.boot:spring-boot-starter-security:1.2.0.RELEASE')
+   	testCompile('junit:junit:4.11')
+    testCompile('org.springframework.boot:spring-boot-starter-test:1.2.0.RELEASE')
 }

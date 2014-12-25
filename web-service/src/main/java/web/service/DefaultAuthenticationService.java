@@ -10,13 +10,13 @@ import web.properties.AuthenticationServiceProperties;
 @Service
 public class DefaultAuthenticationService implements AuthenticationService {
 
-	@Autowired
-	private AuthenticationServiceProperties properties;
-	
-	@Override
-	public LoginUser auth(String username) {
-		RestTemplate rt = new RestTemplate();	
-		return rt.postForObject(properties.getUrl() + "login",username, LoginUser.class);		
-	}
+    @Autowired
+    private AuthenticationServiceProperties properties;
+    
+    @Override
+    public LoginUser auth(String username) {
+	RestTemplate rt = new RestTemplate();	
+	return rt.postForObject(properties.getUrl() + "login",username, LoginUser.class);		
+    }
 
 }

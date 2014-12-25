@@ -19,33 +19,33 @@ import customer.service.CustomerService;
 @Controller
 @RequestMapping(value = "/customers")
 public class CustomerController {
-	
-	@Autowired
-	CustomerService service;
-	
-	/**
-	 * 顧客一覧情報を取得します.
-	 * @return 顧客一覧情報
-	 */
-	@RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody List<Customer> findAll() {
-		return service.findAll();
-    }
 
-	/**
-	 * 顧客情報を登録します.
-	 * @param customer 顧客
-	 */
-	@RequestMapping(method = RequestMethod.POST)
-    public @ResponseBody void add(@RequestBody Customer customer) {
-		service.add(customer);
+    @Autowired
+    CustomerService service;
+    
+    /**
+    * 顧客一覧情報を取得します.
+    * @return 顧客一覧情報
+    */
+    @RequestMapping(method = RequestMethod.GET)
+    public @ResponseBody List<Customer> findAll() {
+        return service.findAll();
     }
-	
-	/**
-	 * 特定の顧客情報を取得します.
-	 */
-	@RequestMapping(method = RequestMethod.GET,value = "/{id}")
+    
+    /**
+    * 顧客情報を登録します.
+    * @param customer 顧客
+    */
+    @RequestMapping(method = RequestMethod.POST)
+    public @ResponseBody void add(@RequestBody Customer customer) {
+        service.add(customer);
+    }
+    
+    /**
+    * 特定の顧客情報を取得します.
+    */
+    @RequestMapping(method = RequestMethod.GET,value = "/{id}")
     public @ResponseBody Customer find(@PathVariable Long id) {
-		return service.find(id);
+        return service.find(id);
     }
 }

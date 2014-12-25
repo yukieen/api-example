@@ -10,34 +10,29 @@ import auth.model.LoginUser;
 @Service
 public class DefaultLoginService implements LoginService {
 
-	@Autowired
-	LoginMapper mapper;
-
-	@Override
-	public LoginUser login(String username) {
-		LoginUser user = mapper.find(username);
-		if(user == null){
-			return new LoginUser("","","");
-		}
-		return cryptoPassword(user);
-	}
-	
-	/**
-	 * パスワードを暗号化します.
-	 * <p>
-	 * H2DB使用のためここで暗号化していますが、
-	 * postgresqlに移行するときは
-	 * pgcryptoモジュール等を利用してDB格納時に暗号化されるよう設定してください.
-	 * </p>
-	 * @param user ログインユーザー情報
-	 * @return パスワード暗号化後のユーザー情報
-	 */
-	private LoginUser cryptoPassword(LoginUser user){
-		user.setPassword(bcrypt(user.getPassword()));
-		return user;
-	}
-	private String bcrypt(String password){
-		String salt = BCrypt.gensalt();	 
-	    return BCrypt.hashpw(password, salt);
-	}
+    @Autowired
+    LoginMapper mapper;
+    
+    @Override
+    public LoginUser login(String username) {
+        LoginUser user = mapper.find(username);
+        if(user == null){
+            return new LoginUser("","","");
+        }
+        return cryptoPassword(user);
+    }
+    
+    /**
+    * パスワードを暗号化します.
+    * @param user ログインユーザー情報
+    * @return パスワード暗号化後のユーザー情報
+    */
+    private LoginUser cryptoPassword(LoginUser user){
+        user.setPassword(bcrypt(user.getPassword()));
+        return user;
+    }
+    private String bcrypt(String password){
+        String salt = BCrypt.gensalt();	 
+        return BCrypt.hashpw(password, salt);
+    }
 }

@@ -20,8 +20,8 @@ import web.service.LoginService;
 @EnableWebMvcSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private LoadBalancerProperties properties;
+    @Autowired
+    private LoadBalancerProperties properties;
 	
     @Override
     public void configure(WebSecurity web) throws Exception {
@@ -42,8 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Configuration
-    static class AuthenticationConfiguration extends
-	    GlobalAuthenticationConfigurerAdapter {
+    static class AuthenticationConfiguration extends GlobalAuthenticationConfigurerAdapter {
+	
 	@Autowired
 	private LoginService service;
 

@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.context.annotation.Configuration;
 
+/***
+ * ServletFilter
+ *
+ */
 @Configuration
 public class WebFilter implements Filter {
 

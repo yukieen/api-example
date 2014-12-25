@@ -10,17 +10,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import auth.model.LoginUser;
 import auth.service.LoginService;
 
-
 @Controller
 @RequestMapping(value = "/login")
 public class LoginController {
-		
-	@Autowired
-	private LoginService service;
-	
-	@RequestMapping(method = RequestMethod.POST)
+
+    @Autowired
+    private LoginService service;
+
+    @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody LoginUser login(@RequestBody String username) {
-		return service.login(username);
+	return service.login(username);
     } 
-	
+
 }

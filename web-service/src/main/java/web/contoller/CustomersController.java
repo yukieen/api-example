@@ -17,20 +17,20 @@ import web.properties.CustomerServiceProperties;
 @Controller
 @RequestMapping("/customers")
 public class CustomersController {
-	
-	@Autowired
-	CustomerServiceProperties properties;
-	
-	/**
-	 * 顧客情報を一覧表示します.
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(method = RequestMethod.GET)
+
+    @Autowired
+    private CustomerServiceProperties properties;
+
+    /**
+     * 顧客情報を一覧表示します.
+     * @param model
+     * @return 顧客情報一覧画面のファイル名
+     */
+    @RequestMapping(method = RequestMethod.GET)
     public String list(Model model) {
-		RestTemplate rt = new RestTemplate();		
-		ResponseEntity<Customer[]> responseEntity = rt.getForEntity(properties.getUrl() + "customers", Customer[].class);
-		model.addAttribute("customers",responseEntity.getBody());
+	RestTemplate rt = new RestTemplate();		
+	ResponseEntity<Customer[]> responseEntity = rt.getForEntity(properties.getUrl() + "customers", Customer[].class);
+	model.addAttribute("customers",responseEntity.getBody());
         return "customers";
     }
 

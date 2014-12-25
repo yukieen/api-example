@@ -7,14 +7,14 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "load-balancer", ignoreUnknownFields = false)
 public class LoadBalancerProperties {
 
-	private String url;
+    private String url;
+    
+    public String getUrl() {
+	return url;
+    }
+    
+    public void setUrl(String url) {
+	this.url = url;
+    }
 
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-	
 }
